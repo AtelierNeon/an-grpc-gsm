@@ -12,7 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if(gRPC_PROTOBUF_PROVIDER STREQUAL "module")
+find_package(SiblingProtobuf)
+if(Protobuf_FOUND)
+  if(TARGET protobuf::${_gRPC_PROTOBUF_LIBRARY_NAME})
+    set(_gRPC_PROTOBUF_LIBRARIES protobuf::${_gRPC_PROTOBUF_LIBRARY_NAME})
+  else()
+    set(_gRPC_PROTOBUF_LIBRARIES ${_gRPC_PROTOBUF_LIBRARY_NAME})
+  endif()
+  if(TARGET protobuf::libprotoc)
+    set(_gRPC_PROTOBUF_PROTOC_LIBRARIES protobuf::libprotoc)
+    # extract the include dir from target's properties
+    get_target_property(_gRPC_PROTOBUF_WELLKNOWN_INCLUDE_DIR protobuf::libprotoc INTERFACE_INCLUDE_DIRECTORIES)
+  else()
+    set(_gRPC_PROTOBUF_PROTOC_LIBRARIES libprotoc)
+  endif()
+  if(TARGET protoc)
+    set(_gRPC_PROTOBUF_PROTOC protoc)
+    if(CMAKE_CROSSCOMPILING)
+      find_program(_gRPC_PROTOBUF_PROTOC_EXECUTABLE protoc)
+    else()
+      set(_gRPC_PROTOBUF_PROTOC_EXECUTABLE $<TARGET_FILE:protoc>)
+    endif()
+  endif()
+  set(_gRPC_PROTOBUF_WELLKNOWN_INCLUDE_DIR ${Protobuf_INCLUDE_DIRS})
+elseif(gRPC_PROTOBUF_PROVIDER STREQUAL "module")
   # Building the protobuf tests require gmock what is not part of a standard protobuf checkout.
   # Disable them unless they are explicitly requested from the cmake command line (when we assume
   # gmock is downloaded to the right location inside protobuf).

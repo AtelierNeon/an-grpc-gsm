@@ -16,7 +16,11 @@
 # transitively so `_gRPC_RE2_INCLUDE_DIR` should be set for gRPC
 # to find header files.
 
-if(gRPC_RE2_PROVIDER STREQUAL "module")
+find_package(SiblingRE2)
+if(RE2_FOUND)
+  set(_gRPC_RE2_INCLUDE_DIR "${RE2_INCLUDE_DIR}")
+  set(_gRPC_RE2_LIBRARIES ${RE2_LIBRARIES})
+elseif(gRPC_RE2_PROVIDER STREQUAL "module")
   if(NOT RE2_ROOT_DIR)
     set(RE2_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/re2)
   endif()

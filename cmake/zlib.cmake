@@ -16,7 +16,11 @@
 # transitively so `_gRPC_ZLIB_INCLUDE_DIR` should be set for gRPC
 # to find header files.
 
-if(gRPC_ZLIB_PROVIDER STREQUAL "module")
+find_package(SiblingZLIB)
+if(ZLIB_FOUND)
+  set(_gRPC_ZLIB_LIBRARIES ZLIB::ZLIB)
+  set(_gRPC_ZLIB_INCLUDE_DIR "${ZLIB_INCLUDE_DIRS}")
+elseif(gRPC_ZLIB_PROVIDER STREQUAL "module")
   if(NOT ZLIB_ROOT_DIR)
     set(ZLIB_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/zlib)
   endif()

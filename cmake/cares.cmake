@@ -12,7 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if(gRPC_CARES_PROVIDER STREQUAL "module")
+find_package(SiblingCARES)
+if(CARES_FOUND)
+  set(_gRPC_CARES_LIBRARIES ${CARES_LIBRARIES})
+elseif(gRPC_CARES_PROVIDER STREQUAL "module")
   if(NOT CARES_ROOT_DIR)
     set(CARES_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/cares/cares)
   endif()

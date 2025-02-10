@@ -16,7 +16,11 @@
 # transitively so `_gRPC_SSL_INCLUDE_DIR` should be set for gRPC
 # to find header files.
 
-if(gRPC_SSL_PROVIDER STREQUAL "module")
+find_package(SiblingOpenSSL)
+if(OPENSSL_FOUND)
+  set(_gRPC_SSL_INCLUDE_DIR ${OPENSSL_INCLUDE_DIR})
+  set(_gRPC_SSL_LIBRARIES ${OPENSSL_LIBRARIES})
+elseif(gRPC_SSL_PROVIDER STREQUAL "module")
   if(NOT BORINGSSL_ROOT_DIR)
     set(BORINGSSL_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/boringssl-with-bazel)
   endif()
