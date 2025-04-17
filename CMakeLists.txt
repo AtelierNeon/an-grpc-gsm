@@ -1729,9 +1729,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 
@@ -2674,9 +2676,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 
@@ -3348,9 +3352,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 
@@ -4202,9 +4208,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 
@@ -4268,9 +4276,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 
@@ -4332,9 +4342,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 
@@ -4406,9 +4418,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 endif()
 
@@ -4484,9 +4498,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 endif()
@@ -4893,9 +4909,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 
@@ -5322,9 +5340,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 
@@ -5394,9 +5414,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 
 
@@ -5465,9 +5487,11 @@ foreach(_hdr
 )
   string(REPLACE "include/" "" _path ${_hdr})
   get_filename_component(_path ${_path} PATH)
-  install(FILES ${_hdr}
-    DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
-  )
+  if(gRPC_INSTALL)
+    install(FILES ${_hdr}
+      DESTINATION "${gRPC_INSTALL_INCLUDEDIR}/${_path}"
+    )
+  endif()
 endforeach()
 endif()
 
@@ -30344,20 +30368,22 @@ configure_file(cmake/gRPCConfig.cmake.in
 write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/gRPCConfigVersion.cmake
   VERSION ${gRPC_CPP_VERSION}
   COMPATIBILITY AnyNewerVersion)
-install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/gRPCConfig.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/gRPCConfigVersion.cmake
-  DESTINATION ${gRPC_INSTALL_CMAKEDIR}
-)
-install(FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Findc-ares.cmake
-    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Findre2.cmake
-    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Findsystemd.cmake
-  DESTINATION ${gRPC_INSTALL_CMAKEDIR}/modules
-)
+if(gRPC_INSTALL)
+  install(FILES
+      ${CMAKE_CURRENT_BINARY_DIR}/gRPCConfig.cmake
+      ${CMAKE_CURRENT_BINARY_DIR}/gRPCConfigVersion.cmake
+    DESTINATION ${gRPC_INSTALL_CMAKEDIR}
+  )
+  install(FILES
+      ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Findc-ares.cmake
+      ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Findre2.cmake
+      ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Findsystemd.cmake
+    DESTINATION ${gRPC_INSTALL_CMAKEDIR}/modules
+  )
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/etc/roots.pem
-  DESTINATION ${gRPC_INSTALL_SHAREDIR})
+  install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/etc/roots.pem
+    DESTINATION ${gRPC_INSTALL_SHAREDIR})
+endif()
 
 # Function to generate pkg-config files.
 function(generate_pkgconfig name description version requires requires_private
@@ -30374,8 +30400,10 @@ function(generate_pkgconfig name description version requires requires_private
     "${grpc_SOURCE_DIR}/cmake/pkg-config-template.pc.in"
     "${output_filepath}"
     @ONLY)
-  install(FILES "${output_filepath}"
-    DESTINATION "${gRPC_INSTALL_LIBDIR}/pkgconfig")
+  if(gRPC_INSTALL)
+    install(FILES "${output_filepath}"
+      DESTINATION "${gRPC_INSTALL_LIBDIR}/pkgconfig")
+  endif()
 endfunction()
 
 # gpr .pc file
