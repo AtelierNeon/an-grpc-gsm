@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+set(CARES_USE_STATIC_LIBS ON)
 find_package(SiblingCARES)
 if(CARES_FOUND)
   set(_gRPC_CARES_LIBRARIES ${CARES_LIBRARIES})
